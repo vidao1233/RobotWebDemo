@@ -1,0 +1,889 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.0.1 (Python 3.12.4 on win32)" generated="2024-08-13T09:09:02.424894" rpa="false" schemaversion="5">
+<suite id="s1" name="Login" source="C:\Users\vttdao\python workspace\Dao.Vi_Assignment_6.0\RobotWebDemo\Tests\Login.robot">
+<kw name="Prepare for login" owner="Base" type="SETUP">
+<kw name="Open Chrome client" owner="SetupTest">
+<kw name="Web Open Chrome Client" owner="WebUtils">
+<kw name="Start Process" owner="Process">
+<msg time="2024-08-13T09:09:03.340198" level="INFO">Starting process:
+"C:\Program Files\Google\Chrome\Application\chrome.exe" --remote-debugging-port=9222 --user-data-dir=C:\Users\vttdao\TmpProfile --incognito --disable-popup-blocking</msg>
+<msg time="2024-08-13T09:09:03.365548" level="INFO">${result} = &lt;Popen: returncode: None args: ['C:\\Program Files\\Google\\Chrome\\Applicat...&gt;</msg>
+<var>${result}</var>
+<arg>${chromeExecPath}</arg>
+<arg>--remote-debugging-port\=${chrome_debug_port}</arg>
+<arg>--user-data-dir\=${chrome_test_profile_folder}</arg>
+<arg>--incognito</arg>
+<arg>--disable-popup-blocking</arg>
+<doc>Starts a new process on background.</doc>
+<status status="PASS" start="2024-08-13T09:09:03.340198" elapsed="0.025350"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2024-08-13T09:09:08.366608" level="INFO">Slept 5 seconds.</msg>
+<arg>5s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2024-08-13T09:09:03.365548" elapsed="5.001226"/>
+</kw>
+<return>
+<value>${result}</value>
+<status status="PASS" start="2024-08-13T09:09:08.366774" elapsed="0.000324"/>
+</return>
+<msg time="2024-08-13T09:09:08.367098" level="INFO">${result} = &lt;Popen: returncode: None args: ['C:\\Program Files\\Google\\Chrome\\Applicat...&gt;</msg>
+<var>${result}</var>
+<arg>${chrome_path}</arg>
+<arg>${chrome_debug_port}</arg>
+<arg>${chrome_test_profile_folder}</arg>
+<doc>Open a chrome client that can be connect repeatedly via specified debug port</doc>
+<status status="PASS" start="2024-08-13T09:09:03.339131" elapsed="5.027967"/>
+</kw>
+<kw name="Set Suite Variable" owner="BuiltIn">
+<msg time="2024-08-13T09:09:08.368387" level="INFO">${chrome_process} = &lt;Popen: returncode: None args: ['C:\\Program Files\\Google\\Chrome\\Applicat...&gt;</msg>
+<arg>${chrome_process}</arg>
+<arg>${result}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="PASS" start="2024-08-13T09:09:08.367098" elapsed="0.001289"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${result}</arg>
+<arg>Cannot start Chrome test client; path:${chrome_path}; port:${chrome_debug_port}; profileFolder:${chrome_test_profile_folder}</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" start="2024-08-13T09:09:08.368387" elapsed="0.000000"/>
+</kw>
+<status status="PASS" start="2024-08-13T09:09:03.339131" elapsed="5.030313"/>
+</kw>
+<kw name="Connect to Chrome client" owner="Base">
+<kw name="Web Connect To Chrome Client" owner="WebUtils">
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2024-08-13T09:09:08.370781" level="INFO">${ChromeOptions} = &lt;selenium.webdriver.chrome.options.Options object at 0x0000025C67AEFC80&gt;</msg>
+<var>${ChromeOptions}</var>
+<arg>sys.modules['selenium.webdriver'].ChromeOptions()</arg>
+<arg>sys,selenium.webdriver</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2024-08-13T09:09:08.369444" elapsed="0.001447"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<arg>$ChromeOptions.add_experimental_option("""debuggerAddress""", """127.0.0.1:${chrome_debug_port}""")</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2024-08-13T09:09:08.370942" elapsed="0.000312"/>
+</kw>
+<kw name="Create Webdriver" owner="GUILibrary">
+<msg time="2024-08-13T09:09:08.371812" level="INFO">Creating an instance of the Chrome WebDriver.</msg>
+<msg time="2024-08-13T09:09:15.017766" level="INFO">${result} = 1</msg>
+<var>${result}</var>
+<arg>Chrome</arg>
+<arg>options=${ChromeOptions}</arg>
+<doc>Creates an instance of Selenium WebDriver.</doc>
+<status status="PASS" start="2024-08-13T09:09:08.371254" elapsed="6.646512"/>
+</kw>
+<return>
+<value>${result}</value>
+<status status="PASS" start="2024-08-13T09:09:15.017766" elapsed="0.000000"/>
+</return>
+<arg>${chrome_debug_port}</arg>
+<doc>Connect to a Chrome client if it is open (using Web Open Chrome Client)</doc>
+<status status="PASS" start="2024-08-13T09:09:08.369444" elapsed="6.649386"/>
+</kw>
+<status status="PASS" start="2024-08-13T09:09:08.369444" elapsed="6.649386"/>
+</kw>
+<kw name="Go to home page" owner="Base">
+<kw name="Go To" owner="GUILibrary">
+<msg time="2024-08-13T09:09:15.019884" level="INFO">Opening url 'https://katalon-demo-cura.herokuapp.com/'</msg>
+<arg>${home_page_url}</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2024-08-13T09:09:15.018830" elapsed="3.565843"/>
+</kw>
+<status status="PASS" start="2024-08-13T09:09:15.018830" elapsed="3.566844"/>
+</kw>
+<status status="PASS" start="2024-08-13T09:09:03.339131" elapsed="15.246668"/>
+</kw>
+<test id="s1-t1" name="Empty username" line="12">
+<kw name="Login with invalid input">
+<kw name="Given Go to login page" owner="HomePage">
+<kw name="Open menu" owner="CommonPageOperation">
+<kw name="Wait Until Page Contains Element" owner="GUILibrary">
+<arg>${locator_button_menu}</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" start="2024-08-13T09:09:18.587730" elapsed="0.011257"/>
+</kw>
+<kw name="Click Element" owner="GUILibrary">
+<msg time="2024-08-13T09:09:18.599987" level="INFO">Clicking element '//a[@id='menu-toggle']'.</msg>
+<arg>${locator_button_menu}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2024-08-13T09:09:18.598987" elapsed="0.044182"/>
+</kw>
+<status status="PASS" start="2024-08-13T09:09:18.587730" elapsed="0.056176"/>
+</kw>
+<kw name="Wait Until Page Contains Element" owner="GUILibrary">
+<arg>${locator_button_menu_login}</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" start="2024-08-13T09:09:18.643906" elapsed="0.010649"/>
+</kw>
+<kw name="Click Element" owner="GUILibrary">
+<msg time="2024-08-13T09:09:18.654555" level="INFO">Clicking element '//a[@href='profile.php#login']'.</msg>
+<arg>${locator_button_menu_login}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2024-08-13T09:09:18.654555" elapsed="0.394776"/>
+</kw>
+<status status="PASS" start="2024-08-13T09:09:18.587335" elapsed="0.461996"/>
+</kw>
+<kw name="When Login &quot;${username}&quot; &amp; &quot;${password}&quot;" owner="Login" source_name="Login &quot;${username}&quot; &amp; &quot;${password}&quot;">
+<kw name="Login" owner="LoginPage">
+<kw name="Input Text" owner="GUILibrary">
+<msg time="2024-08-13T09:09:19.050340" level="INFO">Typing text '' into text field '//input[@id='txt-username']'.</msg>
+<arg>${locator_input_username}</arg>
+<arg>${username}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2024-08-13T09:09:19.050340" elapsed="0.071927"/>
+</kw>
+<kw name="Input Text" owner="GUILibrary">
+<msg time="2024-08-13T09:09:19.123279" level="INFO">Typing text 'vidao' into text field '//input[@id='txt-password']'.</msg>
+<arg>${locator_input_password}</arg>
+<arg>${password}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2024-08-13T09:09:19.123279" elapsed="0.052766"/>
+</kw>
+<kw name="Click Element" owner="GUILibrary">
+<msg time="2024-08-13T09:09:19.177054" level="INFO">Clicking element '//button[@id='btn-login']'.</msg>
+<arg>${locator_button_login}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2024-08-13T09:09:19.176045" elapsed="0.605401"/>
+</kw>
+<arg>${username }</arg>
+<arg>${password}</arg>
+<status status="PASS" start="2024-08-13T09:09:19.050340" elapsed="0.733621"/>
+</kw>
+<status status="PASS" start="2024-08-13T09:09:19.049331" elapsed="0.734630"/>
+</kw>
+<kw name="Then See error message login failed" owner="Login">
+<kw name="Get Error Message" owner="LoginPage">
+<kw name="Get Text" owner="GUILibrary">
+<msg time="2024-08-13T09:09:19.806789" level="INFO">${error_message} = Login failed! Please ensure the username and password are valid.</msg>
+<var>${error_message}</var>
+<arg>${locator_message_error}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="PASS" start="2024-08-13T09:09:19.784444" elapsed="0.022345"/>
+</kw>
+<return>
+<value>${error_message}</value>
+<status status="PASS" start="2024-08-13T09:09:19.806789" elapsed="0.000000"/>
+</return>
+<msg time="2024-08-13T09:09:19.806789" level="INFO">${error_message} = Login failed! Please ensure the username and password are valid.</msg>
+<var>${error_message}</var>
+<status status="PASS" start="2024-08-13T09:09:19.784444" elapsed="0.023428"/>
+</kw>
+<kw name="Check True" owner="Utilities">
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${expression}</arg>
+<arg>Fail, ${message}; expect: ${expected_result}; observe: ${observed_result}</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" start="2024-08-13T09:09:19.808372" elapsed="0.000000"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-08-13T09:09:19.809387" level="INFO">Pass, See login fail message; expect: Login failed! Please ensure the username and password are valid.; observe: Login failed! Please ensure the username and password are valid.</msg>
+<arg>Pass, ${message}; expect: ${expected_result}; observe: ${observed_result}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-08-13T09:09:19.809387" elapsed="0.000000"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>\nPass, ${message}; expect: ${expected_result}; observe: ${observed_result}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2024-08-13T09:09:19.809387" elapsed="0.000999"/>
+</kw>
+<arg>"${error_message}==${error_message_login_failed}"</arg>
+<arg>See login fail message</arg>
+<arg>${error_message_login_failed}</arg>
+<arg>${error_message}</arg>
+<status status="PASS" start="2024-08-13T09:09:19.807872" elapsed="0.002514"/>
+</kw>
+<status status="PASS" start="2024-08-13T09:09:19.783961" elapsed="0.026425"/>
+</kw>
+<arg>${EMPTY}</arg>
+<arg>vidao</arg>
+<status status="PASS" start="2024-08-13T09:09:18.585799" elapsed="1.224587"/>
+</kw>
+<status status="PASS" start="2024-08-13T09:09:18.585799" elapsed="1.224587"/>
+</test>
+<test id="s1-t2" name="Empty password" line="13">
+<kw name="Login with invalid input">
+<kw name="Given Go to login page" owner="HomePage">
+<kw name="Open menu" owner="CommonPageOperation">
+<kw name="Wait Until Page Contains Element" owner="GUILibrary">
+<arg>${locator_button_menu}</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" start="2024-08-13T09:09:19.813914" elapsed="0.009433"/>
+</kw>
+<kw name="Click Element" owner="GUILibrary">
+<msg time="2024-08-13T09:09:19.823347" level="INFO">Clicking element '//a[@id='menu-toggle']'.</msg>
+<arg>${locator_button_menu}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2024-08-13T09:09:19.823347" elapsed="0.036899"/>
+</kw>
+<status status="PASS" start="2024-08-13T09:09:19.813447" elapsed="0.047047"/>
+</kw>
+<kw name="Wait Until Page Contains Element" owner="GUILibrary">
+<arg>${locator_button_menu_login}</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" start="2024-08-13T09:09:19.860582" elapsed="0.006888"/>
+</kw>
+<kw name="Click Element" owner="GUILibrary">
+<msg time="2024-08-13T09:09:19.867470" level="INFO">Clicking element '//a[@href='profile.php#login']'.</msg>
+<arg>${locator_button_menu_login}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2024-08-13T09:09:19.867470" elapsed="0.023319"/>
+</kw>
+<status status="PASS" start="2024-08-13T09:09:19.812387" elapsed="0.078402"/>
+</kw>
+<kw name="When Login &quot;${username}&quot; &amp; &quot;${password}&quot;" owner="Login" source_name="Login &quot;${username}&quot; &amp; &quot;${password}&quot;">
+<kw name="Login" owner="LoginPage">
+<kw name="Input Text" owner="GUILibrary">
+<msg time="2024-08-13T09:09:19.892808" level="INFO">Typing text 'vidao' into text field '//input[@id='txt-username']'.</msg>
+<arg>${locator_input_username}</arg>
+<arg>${username}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2024-08-13T09:09:19.891810" elapsed="0.049385"/>
+</kw>
+<kw name="Input Text" owner="GUILibrary">
+<msg time="2024-08-13T09:09:19.941195" level="INFO">Typing text '' into text field '//input[@id='txt-password']'.</msg>
+<arg>${locator_input_password}</arg>
+<arg>${password}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2024-08-13T09:09:19.941195" elapsed="0.047600"/>
+</kw>
+<kw name="Click Element" owner="GUILibrary">
+<msg time="2024-08-13T09:09:19.988795" level="INFO">Clicking element '//button[@id='btn-login']'.</msg>
+<arg>${locator_button_login}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2024-08-13T09:09:19.988795" elapsed="0.638431"/>
+</kw>
+<arg>${username }</arg>
+<arg>${password}</arg>
+<status status="PASS" start="2024-08-13T09:09:19.891810" elapsed="0.735416"/>
+</kw>
+<status status="PASS" start="2024-08-13T09:09:19.891810" elapsed="0.735416"/>
+</kw>
+<kw name="Then See error message login failed" owner="Login">
+<kw name="Get Error Message" owner="LoginPage">
+<kw name="Get Text" owner="GUILibrary">
+<msg time="2024-08-13T09:09:20.644349" level="INFO">${error_message} = Login failed! Please ensure the username and password are valid.</msg>
+<var>${error_message}</var>
+<arg>${locator_message_error}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="PASS" start="2024-08-13T09:09:20.628227" elapsed="0.016988"/>
+</kw>
+<return>
+<value>${error_message}</value>
+<status status="PASS" start="2024-08-13T09:09:20.645215" elapsed="0.000241"/>
+</return>
+<msg time="2024-08-13T09:09:20.645456" level="INFO">${error_message} = Login failed! Please ensure the username and password are valid.</msg>
+<var>${error_message}</var>
+<status status="PASS" start="2024-08-13T09:09:20.628227" elapsed="0.017229"/>
+</kw>
+<kw name="Check True" owner="Utilities">
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${expression}</arg>
+<arg>Fail, ${message}; expect: ${expected_result}; observe: ${observed_result}</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" start="2024-08-13T09:09:20.645456" elapsed="0.001043"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-08-13T09:09:20.646499" level="INFO">Pass, See login fail message; expect: Login failed! Please ensure the username and password are valid.; observe: Login failed! Please ensure the username and password are valid.</msg>
+<arg>Pass, ${message}; expect: ${expected_result}; observe: ${observed_result}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-08-13T09:09:20.646499" elapsed="0.000000"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>\nPass, ${message}; expect: ${expected_result}; observe: ${observed_result}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2024-08-13T09:09:20.646499" elapsed="0.000000"/>
+</kw>
+<arg>"${error_message}==${error_message_login_failed}"</arg>
+<arg>See login fail message</arg>
+<arg>${error_message_login_failed}</arg>
+<arg>${error_message}</arg>
+<status status="PASS" start="2024-08-13T09:09:20.645456" elapsed="0.001043"/>
+</kw>
+<status status="PASS" start="2024-08-13T09:09:20.628227" elapsed="0.019259"/>
+</kw>
+<arg>vidao</arg>
+<arg>${EMPTY}</arg>
+<status status="PASS" start="2024-08-13T09:09:19.811386" elapsed="0.836100"/>
+</kw>
+<status status="PASS" start="2024-08-13T09:09:19.810386" elapsed="0.837100"/>
+</test>
+<test id="s1-t3" name="Invalid username" line="14">
+<kw name="Login with invalid input">
+<kw name="Given Go to login page" owner="HomePage">
+<kw name="Open menu" owner="CommonPageOperation">
+<kw name="Wait Until Page Contains Element" owner="GUILibrary">
+<arg>${locator_button_menu}</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" start="2024-08-13T09:09:20.648486" elapsed="0.005000"/>
+</kw>
+<kw name="Click Element" owner="GUILibrary">
+<msg time="2024-08-13T09:09:20.654496" level="INFO">Clicking element '//a[@id='menu-toggle']'.</msg>
+<arg>${locator_button_menu}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2024-08-13T09:09:20.654496" elapsed="0.032932"/>
+</kw>
+<status status="PASS" start="2024-08-13T09:09:20.648486" elapsed="0.038942"/>
+</kw>
+<kw name="Wait Until Page Contains Element" owner="GUILibrary">
+<arg>${locator_button_menu_login}</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" start="2024-08-13T09:09:20.687428" elapsed="0.005033"/>
+</kw>
+<kw name="Click Element" owner="GUILibrary">
+<msg time="2024-08-13T09:09:20.693472" level="INFO">Clicking element '//a[@href='profile.php#login']'.</msg>
+<arg>${locator_button_menu_login}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2024-08-13T09:09:20.692461" elapsed="0.024812"/>
+</kw>
+<status status="PASS" start="2024-08-13T09:09:20.648486" elapsed="0.069798"/>
+</kw>
+<kw name="When Login &quot;${username}&quot; &amp; &quot;${password}&quot;" owner="Login" source_name="Login &quot;${username}&quot; &amp; &quot;${password}&quot;">
+<kw name="Login" owner="LoginPage">
+<kw name="Input Text" owner="GUILibrary">
+<msg time="2024-08-13T09:09:20.719281" level="INFO">Typing text 'invalid' into text field '//input[@id='txt-username']'.</msg>
+<arg>${locator_input_username}</arg>
+<arg>${username}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2024-08-13T09:09:20.718284" elapsed="0.051872"/>
+</kw>
+<kw name="Input Text" owner="GUILibrary">
+<msg time="2024-08-13T09:09:20.771167" level="INFO">Typing text 'vidao' into text field '//input[@id='txt-password']'.</msg>
+<arg>${locator_input_password}</arg>
+<arg>${password}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2024-08-13T09:09:20.770156" elapsed="0.050089"/>
+</kw>
+<kw name="Click Element" owner="GUILibrary">
+<msg time="2024-08-13T09:09:20.820245" level="INFO">Clicking element '//button[@id='btn-login']'.</msg>
+<arg>${locator_button_login}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2024-08-13T09:09:20.820245" elapsed="0.596568"/>
+</kw>
+<arg>${username }</arg>
+<arg>${password}</arg>
+<status status="PASS" start="2024-08-13T09:09:20.718284" elapsed="0.698529"/>
+</kw>
+<status status="PASS" start="2024-08-13T09:09:20.718284" elapsed="0.698529"/>
+</kw>
+<kw name="Then See error message login failed" owner="Login">
+<kw name="Get Error Message" owner="LoginPage">
+<kw name="Get Text" owner="GUILibrary">
+<msg time="2024-08-13T09:09:21.430969" level="INFO">${error_message} = Login failed! Please ensure the username and password are valid.</msg>
+<var>${error_message}</var>
+<arg>${locator_message_error}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="PASS" start="2024-08-13T09:09:21.418465" elapsed="0.012504"/>
+</kw>
+<return>
+<value>${error_message}</value>
+<status status="PASS" start="2024-08-13T09:09:21.430969" elapsed="0.000997"/>
+</return>
+<msg time="2024-08-13T09:09:21.431966" level="INFO">${error_message} = Login failed! Please ensure the username and password are valid.</msg>
+<var>${error_message}</var>
+<status status="PASS" start="2024-08-13T09:09:21.416813" elapsed="0.015153"/>
+</kw>
+<kw name="Check True" owner="Utilities">
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${expression}</arg>
+<arg>Fail, ${message}; expect: ${expected_result}; observe: ${observed_result}</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" start="2024-08-13T09:09:21.431966" elapsed="0.000000"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-08-13T09:09:21.432975" level="INFO">Pass, See login fail message; expect: Login failed! Please ensure the username and password are valid.; observe: Login failed! Please ensure the username and password are valid.</msg>
+<arg>Pass, ${message}; expect: ${expected_result}; observe: ${observed_result}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-08-13T09:09:21.432975" elapsed="0.000000"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>\nPass, ${message}; expect: ${expected_result}; observe: ${observed_result}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2024-08-13T09:09:21.432975" elapsed="0.000000"/>
+</kw>
+<arg>"${error_message}==${error_message_login_failed}"</arg>
+<arg>See login fail message</arg>
+<arg>${error_message_login_failed}</arg>
+<arg>${error_message}</arg>
+<status status="PASS" start="2024-08-13T09:09:21.431966" elapsed="0.001009"/>
+</kw>
+<status status="PASS" start="2024-08-13T09:09:21.416813" elapsed="0.017153"/>
+</kw>
+<arg>invalid</arg>
+<arg>vidao</arg>
+<status status="PASS" start="2024-08-13T09:09:20.647486" elapsed="0.786480"/>
+</kw>
+<status status="PASS" start="2024-08-13T09:09:20.647486" elapsed="0.786480"/>
+</test>
+<test id="s1-t4" name="Valid username, invalid password" line="15">
+<kw name="Login with invalid input">
+<kw name="Given Go to login page" owner="HomePage">
+<kw name="Open menu" owner="CommonPageOperation">
+<kw name="Wait Until Page Contains Element" owner="GUILibrary">
+<arg>${locator_button_menu}</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" start="2024-08-13T09:09:21.434967" elapsed="0.006421"/>
+</kw>
+<kw name="Click Element" owner="GUILibrary">
+<msg time="2024-08-13T09:09:21.441388" level="INFO">Clicking element '//a[@id='menu-toggle']'.</msg>
+<arg>${locator_button_menu}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2024-08-13T09:09:21.441388" elapsed="0.037527"/>
+</kw>
+<status status="PASS" start="2024-08-13T09:09:21.434967" elapsed="0.043948"/>
+</kw>
+<kw name="Wait Until Page Contains Element" owner="GUILibrary">
+<arg>${locator_button_menu_login}</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" start="2024-08-13T09:09:21.478915" elapsed="0.007127"/>
+</kw>
+<kw name="Click Element" owner="GUILibrary">
+<msg time="2024-08-13T09:09:21.486042" level="INFO">Clicking element '//a[@href='profile.php#login']'.</msg>
+<arg>${locator_button_menu_login}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2024-08-13T09:09:21.486042" elapsed="0.027254"/>
+</kw>
+<status status="PASS" start="2024-08-13T09:09:21.434967" elapsed="0.078845"/>
+</kw>
+<kw name="When Login &quot;${username}&quot; &amp; &quot;${password}&quot;" owner="Login" source_name="Login &quot;${username}&quot; &amp; &quot;${password}&quot;">
+<kw name="Login" owner="LoginPage">
+<kw name="Input Text" owner="GUILibrary">
+<msg time="2024-08-13T09:09:21.514846" level="INFO">Typing text 'John Doe' into text field '//input[@id='txt-username']'.</msg>
+<arg>${locator_input_username}</arg>
+<arg>${username}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2024-08-13T09:09:21.514846" elapsed="0.055697"/>
+</kw>
+<kw name="Input Text" owner="GUILibrary">
+<msg time="2024-08-13T09:09:21.570543" level="INFO">Typing text 'invalid' into text field '//input[@id='txt-password']'.</msg>
+<arg>${locator_input_password}</arg>
+<arg>${password}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2024-08-13T09:09:21.570543" elapsed="0.047907"/>
+</kw>
+<kw name="Click Element" owner="GUILibrary">
+<msg time="2024-08-13T09:09:21.618450" level="INFO">Clicking element '//button[@id='btn-login']'.</msg>
+<arg>${locator_button_login}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2024-08-13T09:09:21.618450" elapsed="0.605119"/>
+</kw>
+<arg>${username }</arg>
+<arg>${password}</arg>
+<status status="PASS" start="2024-08-13T09:09:21.513812" elapsed="0.709757"/>
+</kw>
+<status status="PASS" start="2024-08-13T09:09:21.513812" elapsed="0.709757"/>
+</kw>
+<kw name="Then See error message login failed" owner="Login">
+<kw name="Get Error Message" owner="LoginPage">
+<kw name="Get Text" owner="GUILibrary">
+<msg time="2024-08-13T09:09:22.236570" level="INFO">${error_message} = Login failed! Please ensure the username and password are valid.</msg>
+<var>${error_message}</var>
+<arg>${locator_message_error}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="PASS" start="2024-08-13T09:09:22.224578" elapsed="0.011992"/>
+</kw>
+<return>
+<value>${error_message}</value>
+<status status="PASS" start="2024-08-13T09:09:22.237569" elapsed="0.000000"/>
+</return>
+<msg time="2024-08-13T09:09:22.237569" level="INFO">${error_message} = Login failed! Please ensure the username and password are valid.</msg>
+<var>${error_message}</var>
+<status status="PASS" start="2024-08-13T09:09:22.223569" elapsed="0.014000"/>
+</kw>
+<kw name="Check True" owner="Utilities">
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${expression}</arg>
+<arg>Fail, ${message}; expect: ${expected_result}; observe: ${observed_result}</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" start="2024-08-13T09:09:22.237569" elapsed="0.001000"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-08-13T09:09:22.238569" level="INFO">Pass, See login fail message; expect: Login failed! Please ensure the username and password are valid.; observe: Login failed! Please ensure the username and password are valid.</msg>
+<arg>Pass, ${message}; expect: ${expected_result}; observe: ${observed_result}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-08-13T09:09:22.238569" elapsed="0.000000"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>\nPass, ${message}; expect: ${expected_result}; observe: ${observed_result}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2024-08-13T09:09:22.238569" elapsed="0.000000"/>
+</kw>
+<arg>"${error_message}==${error_message_login_failed}"</arg>
+<arg>See login fail message</arg>
+<arg>${error_message_login_failed}</arg>
+<arg>${error_message}</arg>
+<status status="PASS" start="2024-08-13T09:09:22.237569" elapsed="0.001000"/>
+</kw>
+<status status="PASS" start="2024-08-13T09:09:22.223569" elapsed="0.016000"/>
+</kw>
+<arg>${valid_username}</arg>
+<arg>invalid</arg>
+<status status="PASS" start="2024-08-13T09:09:21.433966" elapsed="0.805603"/>
+</kw>
+<status status="PASS" start="2024-08-13T09:09:21.433966" elapsed="0.805603"/>
+</test>
+<test id="s1-t5" name="Valid username, valid password" line="16">
+<kw name="Login successful">
+<kw name="Given Go to login page" owner="HomePage">
+<kw name="Open menu" owner="CommonPageOperation">
+<kw name="Wait Until Page Contains Element" owner="GUILibrary">
+<arg>${locator_button_menu}</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" start="2024-08-13T09:09:22.240569" elapsed="0.011693"/>
+</kw>
+<kw name="Click Element" owner="GUILibrary">
+<msg time="2024-08-13T09:09:22.252262" level="INFO">Clicking element '//a[@id='menu-toggle']'.</msg>
+<arg>${locator_button_menu}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2024-08-13T09:09:22.252262" elapsed="0.060445"/>
+</kw>
+<status status="PASS" start="2024-08-13T09:09:22.240569" elapsed="0.072138"/>
+</kw>
+<kw name="Wait Until Page Contains Element" owner="GUILibrary">
+<arg>${locator_button_menu_login}</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" start="2024-08-13T09:09:22.312707" elapsed="0.006032"/>
+</kw>
+<kw name="Click Element" owner="GUILibrary">
+<msg time="2024-08-13T09:09:22.318739" level="INFO">Clicking element '//a[@href='profile.php#login']'.</msg>
+<arg>${locator_button_menu_login}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2024-08-13T09:09:22.318739" elapsed="0.023871"/>
+</kw>
+<status status="PASS" start="2024-08-13T09:09:22.240569" elapsed="0.102041"/>
+</kw>
+<kw name="When Login &quot;${username}&quot; &amp; &quot;${password}&quot;" owner="Login" source_name="Login &quot;${username}&quot; &amp; &quot;${password}&quot;">
+<kw name="Login" owner="LoginPage">
+<kw name="Input Text" owner="GUILibrary">
+<msg time="2024-08-13T09:09:22.343621" level="INFO">Typing text 'John Doe' into text field '//input[@id='txt-username']'.</msg>
+<arg>${locator_input_username}</arg>
+<arg>${username}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2024-08-13T09:09:22.343621" elapsed="0.050397"/>
+</kw>
+<kw name="Input Text" owner="GUILibrary">
+<msg time="2024-08-13T09:09:22.394948" level="INFO">Typing text 'ThisIsNotAPassword' into text field '//input[@id='txt-password']'.</msg>
+<arg>${locator_input_password}</arg>
+<arg>${password}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2024-08-13T09:09:22.394948" elapsed="0.058760"/>
+</kw>
+<kw name="Click Element" owner="GUILibrary">
+<msg time="2024-08-13T09:09:22.453708" level="INFO">Clicking element '//button[@id='btn-login']'.</msg>
+<arg>${locator_button_login}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2024-08-13T09:09:22.453708" elapsed="0.599813"/>
+</kw>
+<arg>${username }</arg>
+<arg>${password}</arg>
+<status status="PASS" start="2024-08-13T09:09:22.343621" elapsed="0.710929"/>
+</kw>
+<status status="PASS" start="2024-08-13T09:09:22.342610" elapsed="0.711940"/>
+</kw>
+<kw name="Then See book appointment button" owner="Login">
+<kw name="See book appointment" owner="LoginPage">
+<kw name="Count element" owner="Utilities">
+<kw name="Get Element Count" owner="GUILibrary">
+<msg time="2024-08-13T09:09:23.069643" level="INFO">${button_book_appointment_count} = 1</msg>
+<var>${button_book_appointment_count}</var>
+<arg>${locator}</arg>
+<doc>Returns the number of elements matching ``locator``.</doc>
+<status status="PASS" start="2024-08-13T09:09:23.055549" elapsed="0.014094"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2024-08-13T09:09:23.070642" level="INFO">${see_book_button} = True</msg>
+<var>${see_book_button}</var>
+<arg>${button_book_appointment_count}&gt;0</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2024-08-13T09:09:23.069643" elapsed="0.000999"/>
+</kw>
+<return>
+<value>${see_book_button}</value>
+<status status="PASS" start="2024-08-13T09:09:23.070642" elapsed="0.000000"/>
+</return>
+<msg time="2024-08-13T09:09:23.070642" level="INFO">${see_book_button} = True</msg>
+<var>${see_book_button}</var>
+<arg>${locator_button_book_appointment}</arg>
+<status status="PASS" start="2024-08-13T09:09:23.055549" elapsed="0.015093"/>
+</kw>
+<return>
+<value>${see_book_button}</value>
+<status status="PASS" start="2024-08-13T09:09:23.071642" elapsed="0.000000"/>
+</return>
+<msg time="2024-08-13T09:09:23.071642" level="INFO">${see_book_appointment} = True</msg>
+<var>${see_book_appointment}</var>
+<status status="PASS" start="2024-08-13T09:09:23.055549" elapsed="0.016093"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${see_book_appointment}</arg>
+<arg>Fail: Failed to see book appointment button; expected: Login successful, observe: Login failed.</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" start="2024-08-13T09:09:23.071642" elapsed="0.000000"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>\nPass: Login successful! See book appointment button; expected: Login successful, observe: Login successful.</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2024-08-13T09:09:23.072642" elapsed="0.000000"/>
+</kw>
+<status status="PASS" start="2024-08-13T09:09:23.054550" elapsed="0.018092"/>
+</kw>
+<kw name="Logout" owner="Base" type="TEARDOWN">
+<kw name="See logout option" owner="HomePage">
+<kw name="Open menu" owner="CommonPageOperation">
+<kw name="Wait Until Page Contains Element" owner="GUILibrary">
+<arg>${locator_button_menu}</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" start="2024-08-13T09:09:23.073642" elapsed="0.013234"/>
+</kw>
+<kw name="Click Element" owner="GUILibrary">
+<msg time="2024-08-13T09:09:23.087912" level="INFO">Clicking element '//a[@id='menu-toggle']'.</msg>
+<arg>${locator_button_menu}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2024-08-13T09:09:23.087912" elapsed="0.058120"/>
+</kw>
+<status status="PASS" start="2024-08-13T09:09:23.073642" elapsed="0.072891"/>
+</kw>
+<kw name="Wait Until Page Contains Element" owner="GUILibrary">
+<arg>${locator_button_menu_logout}</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" start="2024-08-13T09:09:23.146533" elapsed="0.008006"/>
+</kw>
+<kw name="Click Element" owner="GUILibrary">
+<msg time="2024-08-13T09:09:23.155552" level="INFO">Clicking element '//a[@href='authenticate.php?logout']'.</msg>
+<arg>${locator_button_menu_logout}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2024-08-13T09:09:23.154539" elapsed="0.593206"/>
+</kw>
+<status status="PASS" start="2024-08-13T09:09:23.073642" elapsed="0.674103"/>
+</kw>
+<status status="PASS" start="2024-08-13T09:09:23.072642" elapsed="0.675758"/>
+</kw>
+<arg>${valid_username}</arg>
+<arg>${valid_password}</arg>
+<status status="PASS" start="2024-08-13T09:09:22.239569" elapsed="1.508831"/>
+</kw>
+<status status="PASS" start="2024-08-13T09:09:22.239569" elapsed="1.509062"/>
+</test>
+<test id="s1-t6" name="Get error when login failed multiple times" line="19">
+<kw name="Login failed multiple times">
+<kw name="Given Go to login page" owner="HomePage">
+<kw name="Open menu" owner="CommonPageOperation">
+<kw name="Wait Until Page Contains Element" owner="GUILibrary">
+<arg>${locator_button_menu}</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" start="2024-08-13T09:09:23.750779" elapsed="0.007326"/>
+</kw>
+<kw name="Click Element" owner="GUILibrary">
+<msg time="2024-08-13T09:09:23.759065" level="INFO">Clicking element '//a[@id='menu-toggle']'.</msg>
+<arg>${locator_button_menu}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2024-08-13T09:09:23.758561" elapsed="0.034359"/>
+</kw>
+<status status="PASS" start="2024-08-13T09:09:23.750000" elapsed="0.042920"/>
+</kw>
+<kw name="Wait Until Page Contains Element" owner="GUILibrary">
+<arg>${locator_button_menu_login}</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" start="2024-08-13T09:09:23.792920" elapsed="0.006379"/>
+</kw>
+<kw name="Click Element" owner="GUILibrary">
+<msg time="2024-08-13T09:09:23.800299" level="INFO">Clicking element '//a[@href='profile.php#login']'.</msg>
+<arg>${locator_button_menu_login}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2024-08-13T09:09:23.800299" elapsed="0.322999"/>
+</kw>
+<status status="PASS" start="2024-08-13T09:09:23.750000" elapsed="0.373298"/>
+</kw>
+<kw name="When Attempt multiple &quot;${attempt}&quot; failed logins" owner="Login" source_name="Attempt multiple &quot;${attempts}&quot; failed logins">
+<for flavor="IN RANGE">
+<iter>
+<kw name="Login" owner="LoginPage">
+<kw name="Input Text" owner="GUILibrary">
+<msg time="2024-08-13T09:09:24.125297" level="INFO">Typing text 'John Doe' into text field '//input[@id='txt-username']'.</msg>
+<arg>${locator_input_username}</arg>
+<arg>${username}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2024-08-13T09:09:24.124297" elapsed="0.086020"/>
+</kw>
+<kw name="Input Text" owner="GUILibrary">
+<msg time="2024-08-13T09:09:24.210317" level="INFO">Typing text 'invalid' into text field '//input[@id='txt-password']'.</msg>
+<arg>${locator_input_password}</arg>
+<arg>${password}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2024-08-13T09:09:24.210317" elapsed="0.048409"/>
+</kw>
+<kw name="Click Element" owner="GUILibrary">
+<msg time="2024-08-13T09:09:24.259738" level="INFO">Clicking element '//button[@id='btn-login']'.</msg>
+<arg>${locator_button_login}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2024-08-13T09:09:24.259738" elapsed="0.599731"/>
+</kw>
+<arg>${valid_username}</arg>
+<arg>invalid</arg>
+<status status="PASS" start="2024-08-13T09:09:24.124297" elapsed="0.735172"/>
+</kw>
+<var name="${i}">0</var>
+<status status="PASS" start="2024-08-13T09:09:24.124297" elapsed="0.735172"/>
+</iter>
+<iter>
+<kw name="Login" owner="LoginPage">
+<kw name="Input Text" owner="GUILibrary">
+<msg time="2024-08-13T09:09:24.860469" level="INFO">Typing text 'John Doe' into text field '//input[@id='txt-username']'.</msg>
+<arg>${locator_input_username}</arg>
+<arg>${username}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2024-08-13T09:09:24.859469" elapsed="0.091789"/>
+</kw>
+<kw name="Input Text" owner="GUILibrary">
+<msg time="2024-08-13T09:09:24.951258" level="INFO">Typing text 'invalid' into text field '//input[@id='txt-password']'.</msg>
+<arg>${locator_input_password}</arg>
+<arg>${password}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2024-08-13T09:09:24.951258" elapsed="0.050229"/>
+</kw>
+<kw name="Click Element" owner="GUILibrary">
+<msg time="2024-08-13T09:09:25.001487" level="INFO">Clicking element '//button[@id='btn-login']'.</msg>
+<arg>${locator_button_login}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2024-08-13T09:09:25.001487" elapsed="0.597991"/>
+</kw>
+<arg>${valid_username}</arg>
+<arg>invalid</arg>
+<status status="PASS" start="2024-08-13T09:09:24.859469" elapsed="0.740009"/>
+</kw>
+<var name="${i}">1</var>
+<status status="PASS" start="2024-08-13T09:09:24.859469" elapsed="0.740009"/>
+</iter>
+<iter>
+<kw name="Login" owner="LoginPage">
+<kw name="Input Text" owner="GUILibrary">
+<msg time="2024-08-13T09:09:25.600478" level="INFO">Typing text 'John Doe' into text field '//input[@id='txt-username']'.</msg>
+<arg>${locator_input_username}</arg>
+<arg>${username}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2024-08-13T09:09:25.599478" elapsed="0.058591"/>
+</kw>
+<kw name="Input Text" owner="GUILibrary">
+<msg time="2024-08-13T09:09:25.659083" level="INFO">Typing text 'invalid' into text field '//input[@id='txt-password']'.</msg>
+<arg>${locator_input_password}</arg>
+<arg>${password}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2024-08-13T09:09:25.658069" elapsed="0.048438"/>
+</kw>
+<kw name="Click Element" owner="GUILibrary">
+<msg time="2024-08-13T09:09:25.706507" level="INFO">Clicking element '//button[@id='btn-login']'.</msg>
+<arg>${locator_button_login}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2024-08-13T09:09:25.706507" elapsed="0.593369"/>
+</kw>
+<arg>${valid_username}</arg>
+<arg>invalid</arg>
+<status status="PASS" start="2024-08-13T09:09:25.599478" elapsed="0.701478"/>
+</kw>
+<var name="${i}">2</var>
+<status status="PASS" start="2024-08-13T09:09:25.599478" elapsed="0.701478"/>
+</iter>
+<iter>
+<kw name="Login" owner="LoginPage">
+<kw name="Input Text" owner="GUILibrary">
+<msg time="2024-08-13T09:09:26.301951" level="INFO">Typing text 'John Doe' into text field '//input[@id='txt-username']'.</msg>
+<arg>${locator_input_username}</arg>
+<arg>${username}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2024-08-13T09:09:26.300956" elapsed="0.062352"/>
+</kw>
+<kw name="Input Text" owner="GUILibrary">
+<msg time="2024-08-13T09:09:26.363308" level="INFO">Typing text 'invalid' into text field '//input[@id='txt-password']'.</msg>
+<arg>${locator_input_password}</arg>
+<arg>${password}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2024-08-13T09:09:26.363308" elapsed="0.051302"/>
+</kw>
+<kw name="Click Element" owner="GUILibrary">
+<msg time="2024-08-13T09:09:26.414610" level="INFO">Clicking element '//button[@id='btn-login']'.</msg>
+<arg>${locator_button_login}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2024-08-13T09:09:26.414610" elapsed="0.600673"/>
+</kw>
+<arg>${valid_username}</arg>
+<arg>invalid</arg>
+<status status="PASS" start="2024-08-13T09:09:26.300956" elapsed="0.714327"/>
+</kw>
+<var name="${i}">3</var>
+<status status="PASS" start="2024-08-13T09:09:26.300956" elapsed="0.714327"/>
+</iter>
+<var>${i}</var>
+<value>${attempts} + 1</value>
+<status status="PASS" start="2024-08-13T09:09:24.124297" elapsed="2.890986"/>
+</for>
+<status status="PASS" start="2024-08-13T09:09:24.123298" elapsed="2.891985"/>
+</kw>
+<kw name="Then See error message login failed multiple times" owner="Login">
+<kw name="Get Error Message" owner="LoginPage">
+<kw name="Get Text" owner="GUILibrary">
+<msg time="2024-08-13T09:09:27.028285" level="INFO">${error_message} = Login failed! Please ensure the username and password are valid.</msg>
+<var>${error_message}</var>
+<arg>${locator_message_error}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="PASS" start="2024-08-13T09:09:27.016282" elapsed="0.013013"/>
+</kw>
+<return>
+<value>${error_message}</value>
+<status status="PASS" start="2024-08-13T09:09:27.029295" elapsed="0.000000"/>
+</return>
+<msg time="2024-08-13T09:09:27.029295" level="INFO">${error_message} = Login failed! Please ensure the username and password are valid.</msg>
+<var>${error_message}</var>
+<status status="PASS" start="2024-08-13T09:09:27.016282" elapsed="0.013013"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<msg time="2024-08-13T09:09:27.029295" level="FAIL">Fail: See error message login failed multiple times; expected:Too many failed login attempts. Please try again later.; observe: Login failed! Please ensure the username and password are valid.</msg>
+<arg>"${error_message}"=="${error_message_login_multiple}"</arg>
+<arg>Fail: See error message login failed multiple times; expected:${error_message_login_multiple}; observe: ${error_message}</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="FAIL" start="2024-08-13T09:09:27.029295" elapsed="0.000997">Fail: See error message login failed multiple times; expected:Too many failed login attempts. Please try again later.; observe: Login failed! Please ensure the username and password are valid.</status>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>\nPass: See error message login failed multiple times; expected:${error_message_login_multiple}; observe: ${error_message}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="NOT RUN" start="2024-08-13T09:09:27.030292" elapsed="0.000000"/>
+</kw>
+<status status="FAIL" start="2024-08-13T09:09:27.015283" elapsed="0.015009">Fail: See error message login failed multiple times; expected:Too many failed login attempts. Please try again later.; observe: Login failed! Please ensure the username and password are valid.</status>
+</kw>
+<arg>3</arg>
+<status status="FAIL" start="2024-08-13T09:09:23.748631" elapsed="3.281661">Fail: See error message login failed multiple times; expected:Too many failed login attempts. Please try again later.; observe: Login failed! Please ensure the username and password are valid.</status>
+</kw>
+<status status="FAIL" start="2024-08-13T09:09:23.748631" elapsed="3.281661">Fail: See error message login failed multiple times; expected:Too many failed login attempts. Please try again later.; observe: Login failed! Please ensure the username and password are valid.</status>
+</test>
+<kw name="Close Chrome Connection" owner="SetupTest" type="TEARDOWN">
+<kw name="Web Close Chrome Client" owner="WebUtils">
+<kw name="Terminate Process" owner="Process">
+<msg time="2024-08-13T09:09:27.031284" level="INFO">Forcefully killing process.</msg>
+<msg time="2024-08-13T09:09:27.139558" level="INFO">Process completed.</msg>
+<arg>${chrome_process_result}</arg>
+<arg>kill=true</arg>
+<doc>Stops the process gracefully or forcefully.</doc>
+<status status="PASS" start="2024-08-13T09:09:27.031284" elapsed="0.108274"/>
+</kw>
+<arg>${chrome_process}</arg>
+<doc>Close the Chrome client that was opened via the Web Open Chrome Client keyword</doc>
+<status status="PASS" start="2024-08-13T09:09:27.031284" elapsed="0.108274"/>
+</kw>
+<status status="PASS" start="2024-08-13T09:09:27.031284" elapsed="0.108274"/>
+</kw>
+<doc>Login in Cura Healthcare Service</doc>
+<status status="FAIL" start="2024-08-13T09:09:02.503920" elapsed="24.635638"/>
+</suite>
+<statistics>
+<total>
+<stat pass="5" fail="1" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="5" fail="1" skip="0" id="s1" name="Login">Login</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

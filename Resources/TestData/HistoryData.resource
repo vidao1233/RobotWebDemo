@@ -1,0 +1,2 @@
+*** Variables ***
+${notice}=  No appointment.
